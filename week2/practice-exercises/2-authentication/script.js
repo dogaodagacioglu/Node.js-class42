@@ -8,8 +8,23 @@
  * Hints:
  * - for basic authentication the username and password need to be base64 encoded
  */
-function printBooks() {
-  // YOUR CODE GOES IN HERE
+
+import fetch from "node-fetch";
+
+async function fetchBooks() {
+  const apiUrl = 'https://restapiabasicauthe-sandbox.mxapps.io/api/books';
+  const base64Credentials = 'YWRtaW46aHZnWDhLbFZFYQ==';
+
+  const response = await fetch(apiUrl, {
+    headers: { 'Authorization': `Basic ${base64Credentials}` }
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+  } else {
+    console.log(`Error ${response.status}: ${response.statusText}`);
+  }
 }
 
-printBooks();
+fetchBooks();

@@ -3,7 +3,7 @@ import supertest from "supertest";
 
 const request = supertest(app);
 
-describe("should respond with a success message if the city is found", () => {
+describe("POST /should respond with a success message if the city is found", () => {
   it("It should respond with a 200 status code", async () => {
     const response = await request.post("/weather").send({
       city: "Boston",
@@ -21,7 +21,7 @@ describe("should respond with a success message if the city is found", () => {
 
 // Bad scenarios
 
-describe("should respond with an error message if the city is not found", () => {
+describe("POST/ should respond with an error message if the city is not found", () => {
   it("It should respond with a negative message if city is wrong", async () => {
     const response = await request.post("/weather").send({
       city: "MissingCity",
